@@ -9,11 +9,11 @@
     </div>
 
     <div class='col-md-8 offset-md-1'>
-  		<h2>Book detail</h2>
-  		<table class='table'>
+      <h2>Book detail</h2>
+      <table class='table'>
   		  <tr>
           <td><%= link_to(@book.user) do %>
-            <%= image_tag @book.user.get_profile_image, size:"100x100" %><br>
+            <%= image_tag @book.user.get_profile_image, size:"75x75" %><br>
             <%= @book.user.name %>
             <% end %>
           </td>
@@ -47,26 +47,39 @@
           <% end %>
         </tr>
       </table>
-
+      
       <div>
-      <% @book.post_comments.each do |post_comment| %>
-        <p><%= image_tag post_comment.user.get_profile_image, size:"100x100" %></p>
-        <%= post_comment.user.name %>
-        <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
-
-        <% if post_comment.user == current_user %>
-          <%= link_to 'Destroy',book_post_comment_path(@book.id,post_comment.id), method: :delete, class: "btn btn-sm btn-danger"%>
+        <table class='table'>
+        <% @book.post_comments.each do |post_comment| %>
+        <tr>
+          <td><%= link_to(@book.user) do %>
+            <%= image_tag @book.user.get_profile_image, size:"75x75" %><br>
+            <%= @book.user.name %>
+            <% end %>
+          </td>
+          
+          <td>
+          <%= post_comment.comment %>
+          </td>
+          
+          <td>
+            <% if post_comment.user == current_user %>
+              <%= link_to 'Destroy',book_post_comment_path(@book.id,post_comment.id), method: :delete, class: "btn btn-sm btn-danger"%>
+            <% end %>
+          </td>
         <% end %>
-
-      <% end %>
+        </tr>
+      </table>
       </div>
+      
+      
       <div>
         <%= form_with model: [@book, @post_comment] do |f| %>
           <%= f.text_area :comment, class: 'form-control book_body'%>
           <%= f.submit "送信" %>
         <% end %>
-      </div>
-
+    </div>
+      
     </div>
   </div>
 </div>
