@@ -3,6 +3,11 @@ Rails.application.routes.draw do
 
   root to: "homes#top"
   get "home/about",to: "homes#about"
+  
+  # 検索機能の実装 %>
+  get "/search" => "searches#search"
+  #ここまで
+  
   devise_for :users
 
   resources :books, only: [:index,:show,:edit,:create,:destroy,:update]do
