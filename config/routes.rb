@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: "homes#top"
   get "home/about",to: "homes#about"
   
-  # 検索機能の実装 %>
+  # 検索機能の実装 
   get "/search" => "searches#search"
   #ここまで
   
@@ -22,6 +22,11 @@ Rails.application.routes.draw do
     resource :relationships, only: [:create, :destroy]
   	get "followings" => "relationships#followings", as: "followings"
   	get "followers" => "relationships#followers", as: "followers"
+    
+    #投稿数の差
+    get "search" => "users#search"
+    #end
+    
   end
   #ここまで
   
