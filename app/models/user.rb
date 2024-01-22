@@ -25,9 +25,9 @@ class User < ApplicationRecord
   has_many :rooms, through: :user_rooms
   #ここまで
   
-  
-  
-  
+  #グループ
+  has_many :grope_users,dependent: :destroy
+  #end
   
   def follow(user)
     active_relationships.create(followed_id: user.id)
