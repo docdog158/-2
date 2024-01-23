@@ -37,7 +37,10 @@ Rails.application.routes.draw do
   
   
   #group
-  resources :groups, only: [:new, :index, :show, :create, :edit, :update]
+  resources :groups, only: [:new, :index, :show, :create, :edit, :update] do
+    #上のdo＋下のendまで
+      resource :group_users, only: [:create, :destroy]
+    end
   #end
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

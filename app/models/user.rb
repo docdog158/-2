@@ -26,7 +26,7 @@ class User < ApplicationRecord
   #ここまで
   
   #グループ
-  has_many :grope_users,dependent: :destroy
+  has_many :group_users, dependent: :destroy
   #end
   
   def follow(user)
