@@ -39,7 +39,11 @@ Rails.application.routes.draw do
   #group
   resources :groups, only: [:new, :index, :show, :create, :edit, :update] do
     #上のdo＋下のendまで
-      resource :group_users, only: [:create, :destroy]
+    resource :group_users, only: [:create, :destroy]
+    #追加・メール機能  
+    get "new/mail" => "groups#new_mail"
+    get "send/mail" => "groups#send_mail"
+      
     end
   #end
   
