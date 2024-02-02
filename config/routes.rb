@@ -47,5 +47,8 @@ Rails.application.routes.draw do
     end
   #end
   
+  #タグ機能
+  get "search_tag" => "post_workouts#search_tag"  
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

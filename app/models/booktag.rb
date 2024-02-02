@@ -1,0 +1,2 @@
+class Booktag < ApplicationRecord
+end
